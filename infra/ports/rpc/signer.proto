@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/irmatov/togglesign/infra/ports/rpc";
+
+service Signer {
+    rpc Sign(SignRequest) returns (SignResponse);
+    rpc Verify(VerifyRequest) returns (VerifyResponse);
+}
+
+message SignRequest {
+    string jwt_token = 1;
+    repeated Response responses = 2;
+}
+
+message Response {
+    string question = 1;
+    string answer = 2;
+}
+
+message SignResponse {
+    string signature = 1;
+}
+
+message VerifyRequest {
+    string email = 1;
+    string signature = 2;
+}
+
+message VerifyResponse {
+    bool ok = 1;
+    google.protobuf.Timestamp signed_at = 2;
+    repeated Response responses = 3;
+}
