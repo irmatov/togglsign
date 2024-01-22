@@ -15,10 +15,10 @@ The applications (and unit tests) uses PostgreSQL, so it must be running somewhe
 
 ## How to run simplest test client
 
-   cd testclient
-   go build
-   export SIGNER_JWT_KEY="mysecrettoken"
-   ./testclient localhost:12345
+    cd testclient
+    go build
+    export SIGNER_JWT_KEY="mysecrettoken"
+    ./testclient localhost:12345
 
 ## Other notes
 
